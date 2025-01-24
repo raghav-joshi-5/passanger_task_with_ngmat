@@ -1,0 +1,24 @@
+<h3>Passanger</h3>
+<ng-container *ngIf="passangerArr.length > 0; else noPass">
+  <app-pass-count
+    [gettotalCheckin]="passangerArr.length"
+    [getcheckincount]="checkinCount"
+    [passwithchild]="passwithchild"
+  ></app-pass-count>
+  <ul class="list-group my-2">
+    <li
+      *ngFor="let pass of passangerArr"
+      class="list-group-item text-dark mb-2"
+    >
+      {{ pass.fullname }}
+    </li>
+  </ul>
+  <app-pass-card
+    (emitpassInfo)="getemitInfo()"
+    *ngFor="let data of passangerArr"
+    [passObj]="data"
+  ></app-pass-card>
+</ng-container>
+<ng-template #noPass>
+  <p class="alert alert-danger">No passanger in database</p>
+</ng-template>

@@ -1,0 +1,58 @@
+<mat-card class="mb-2">
+  <mat-card-content>
+    <mat-form-field class="passcss">
+      <span
+        [ngClass]="{
+          'bg-success': passObj.checkindate,
+          'bg-danger': !passObj.checkindate
+        }"
+        class="conditional-span"
+      ></span>
+      <input
+        class="p-2"
+        matInput
+        [value]="passObj.fullname"
+        [disabled]="!isHide"
+        #passName
+      />
+    </mat-form-field>
+
+    <p>
+      Checkin Date:
+      <strong>{{ (passObj.checkindate | date) ?? "No Checkin" }}</strong>
+    </p>
+    <p>
+      Children :
+      <strong>{{ passObj.children?.length ?? 0 }}</strong>
+    </p>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button
+      (click)="onEdit()"
+      mat-raised-button
+      color="primary"
+      *ngIf="!isHide"
+      aria-label="Edit Passenger"
+    >
+      Edit
+    </button>
+    <button
+      (click)="onDone(); onUpdate()"
+      mat-raised-button
+      color="primary"
+      *ngIf="isHide"
+      aria-label="Save Changes"
+    >
+      Done
+    </button>
+    <button
+      (click)="onRemove(passObj.id)"
+      mat-raised-button
+      color="warn"
+      aria-label="Remove Passenger"
+    >
+      Remove
+    </button>
+  </mat-card-actions>
+</mat-card>
