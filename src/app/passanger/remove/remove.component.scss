@@ -1,0 +1,6 @@
+::ng-deep .mat-card-actions {
+  display: block; /* Reset to block if default flex is applied */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  justify-content: initial; /* Reset alignment */
+}
