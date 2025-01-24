@@ -106,9 +106,10 @@ export class PassangerService {
     let getIndex = this.passangerArr.findIndex(
       (getindex) => getindex.id === passId
     );
-    let passObj = (this.passangerArr[getIndex].fullname = updatedpassName);
+    let passoldname = this.passangerArr[getIndex].fullname;
+    this.passangerArr[getIndex].fullname = updatedpassName;
     this._snackBar.opensnackBar(
-      `the passanger ${passObj} is updated to ${updatedpassName}`
+      `the passanger ${passoldname} is updated to ${updatedpassName}`
     );
   }
 }
